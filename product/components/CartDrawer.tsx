@@ -2,6 +2,7 @@ import { FC, useMemo, useEffect } from "react";
 
 import {
   Button,
+  CloseButton,
   Divider,
   Drawer,
   DrawerBody,
@@ -42,6 +43,8 @@ export const CartDrawer: FC<CartDrawerProps> = ({
     [items]
   );
 
+  const quantity = useMemo(() => items.reduce((acc, item) => acc + item.quantity, 0), [items]);
+
   const text = useMemo(
     () =>
       items
@@ -67,29 +70,61 @@ export const CartDrawer: FC<CartDrawerProps> = ({
   return (
     <Drawer placement="right" size="sm" onClose={onClose} {...props}>
       <DrawerOverlay>
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Tu pedido</DrawerHeader>
+        <DrawerContent paddingTop={4}>
+          {/* <DrawerCloseButton /> */}
+          <DrawerHeader paddingX={4}>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <Stack
+                fontWeight="500"
+                direction="row"
+                fontSize={{ base: "2xl", sm: "3xl" }}
+              >
+                <Text>Tu pedido</Text>{" "}
+                <Text color="gray.400">({quantity})</Text>
+              </Stack>
+              {/* <DrawerCloseButton /> */}
+              <CloseButton onClick={onClose} />
+            </Stack>
+          </DrawerHeader>
 
-          <DrawerBody>
+          <DrawerBody paddingX={4}>
             {items.length ? (
               <Stack divider={<Divider />} spacing={4}>
                 {items.map((product) => (
                   <Stack key={product.id} direction="row">
                     <Stack width="100%">
-                      <Stack direction="row" justifyContent="space-between">
-                        <Text fontWeight="500">{product.title}</Text>
-                        <Text color="green.400">
+                      <Stack
+                        fontWeight="500"
+                        direction="row"
+                        justifyContent="space-between"
+                        alignItems="center"
+                      >
+                        <Text fontSize="lg">{product.title}</Text>
+                        <Text>
                           {parseCurrency(product.price * product.quantity)}
                         </Text>
                       </Stack>
                       <Stack direction="row">
-                        <Button size="xs" onClick={() => onDecrement(product)}>
+                        <Button
+                          size="xs"
+                          onClick={() => onDecrement(product)}
+                          colorScheme="primary"
+                          borderRadius={999}
+                        >
                           {" "}
                           -{" "}
                         </Button>
-                        <Text>{product.quantity}</Text>
-                        <Button size="xs" onClick={() => onIncrement(product)}>
+                        <Text fontWeight={500}>{product.quantity}</Text>
+                        <Button
+                          size="xs"
+                          onClick={() => onIncrement(product)}
+                          colorScheme="primary"
+                          borderRadius={999}
+                        >
                           {" "}
                           +{" "}
                         </Button>
@@ -105,19 +140,37 @@ export const CartDrawer: FC<CartDrawerProps> = ({
 
           {Boolean(items.length) && (
             <DrawerFooter>
-              <Button
-                as={Link}
-                colorScheme="whatsapp"
-                isExternal
-                size="lg"
-                width="100%"
-                leftIcon={<Image src="https://icongr.am/fontawesome/whatsapp.svg?size=32&color=ffffff" alt="Whatsapp"/>}
-                href={`https://wa.me/5491141414141?text=${encodeURIComponent(
-                  text
-                )}`}
-              >
-                Completar pedido ({total})
-              </Button>
+              <Stack width="100%" spacing={4}>
+                <Divider />
+                <Stack
+                  alignItems="center"
+                  direction="row"
+                  fontSize="lg"
+                  fontWeight="500"
+                  justifyContent="space-between"
+                >
+                  <Text>Total</Text>
+                  <Text>{total}</Text>
+                </Stack>
+                <Button
+                  as={Link}
+                  colorScheme="whatsapp"
+                  isExternal
+                  size="lg"
+                  width="100%"
+                  leftIcon={
+                    <Image
+                      src="https://icongr.am/fontawesome/whatsapp.svg?size=32&color=ffffff"
+                      alt="Whatsapp"
+                    />
+                  }
+                  href={`https://wa.me/5491141414141?text=${encodeURIComponent(
+                    text
+                  )}`}
+                >
+                  Completar pedido
+                </Button>
+              </Stack>
             </DrawerFooter>
           )}
         </DrawerContent>

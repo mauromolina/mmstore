@@ -27,8 +27,8 @@ export const StoreScreen: FC<StoreScreenProps> = ({ products }) => {
       <Stack spacing={6}>
         {products.length ? (
           <Grid
-            gridGap={6}
-            templateColumns="repeat(auto-fill, minmax(240px, 1fr))"
+            gridGap={8}
+            templateColumns={{base: "repeat(auto-fill, minmax(240px, 1fr))", sm: "repeat(auto-fill, minmax(360px, 1fr))"}}
           >
             {products.map((prod) => (
               <ProductItem
@@ -43,6 +43,7 @@ export const StoreScreen: FC<StoreScreenProps> = ({ products }) => {
             No hay productos
           </Text>
         )}
+        {/* TODO: Animar botón */}
         <BuyButton cart={cart} toggleCart={toggleCart}/>
       </Stack>
       <CartDrawer

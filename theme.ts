@@ -6,11 +6,4 @@ export default extendTheme({
     colors: {
         primary: theme.colors[APP_INFO.color],
     },
-    styles: {
-        global: {
-            body: {
-                backgroundColor: "primary.50"
-            }
-        }
-    }
 })
