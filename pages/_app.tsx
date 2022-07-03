@@ -68,7 +68,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
                   textAlign={{ base: "center", sm: "left" }}
                   alignItems={{ base: "center", sm: "flex-start" }}
                 >
-                  <Heading>{APP_INFO.title}</Heading>
+                  <Heading paddingTop={2}>{APP_INFO.title}</Heading>
                   <Text color="gray.500" fontWeight="500" fontSize="lg">
                     {APP_INFO.description}
                   </Text>

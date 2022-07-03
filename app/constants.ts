@@ -1,8 +1,8 @@
 export const APP_INFO = {
     avatar: "https://i.pinimg.com/originals/b8/56/21/b85621e1f8ab31232778ff4b17de9c01.png",
     banner: "https://raw.githubusercontent.com/goncy/store/main/public/assets/banner.jpg",
-    title: "Almacén MM",
-    description: "El almacén de MM",
+    title: "Tienda MM",
+    description: "La tienda virtual de MM",
     phone: `5491112345678`,
     sheet: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRkguNSgVT8-fSmMIvY8CFbwyDlmoHGZj8VKoFHMlBmJvBZP6XpMb2RGB8ERY-Ej1AQtqMYEpRWUTvm/pub?output=csv',
     color: 'teal',
