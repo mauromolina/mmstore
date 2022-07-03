@@ -38,6 +38,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
                 borderRadius="lg"
                 height="100%"
                 maxHeight={64}
+                objectFit="cover"
                 src={APP_INFO.banner}
                 alt="Page Logo"
               />

@@ -1,6 +1,6 @@
 export const APP_INFO = {
-    avatar: "https://via.placeholder.com/128",
-    banner: "https://via.placeholder.com/1440x320",
+    avatar: "https://i.pinimg.com/originals/b8/56/21/b85621e1f8ab31232778ff4b17de9c01.png",
+    banner: "https://raw.githubusercontent.com/goncy/store/main/public/assets/banner.jpg",
     title: "Almacén MM",
     description: "El almacén de MM",
     phone: `5491112345678`,

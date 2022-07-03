@@ -50,7 +50,7 @@ export const ProductItem: FC<ProductProps> = ({ product, addToCart }) => {
             height={{base: 24, sm: 36}}
             loading="lazy"
             minWidth={{base: 24, sm: 36}}
-            objectFit="contain"
+            objectFit="cover"
             src={product.image}
             width={{base: 24, sm: 36}}
           />
